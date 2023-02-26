@@ -1,28 +1,4 @@
-// #include <bits/stdc++.h>
-#include <iostream>
-#include <cstring>
-#include <string>
-#include <cctype>
-#include <algorithm>
-#include <cmath>
-#include <vector>
-#include <iterator>
-#include <set>
-#include <exception>
-#include <cstdlib>
-#include <iomanip>
-#include <bitset>
-#include <cstdio>
-#include <chrono>
-#include <complex>
-#include <algorithm>
-#include <numeric>
-#include <limits.h>
-#include <list>
-#include <vector> 
-#include <unordered_map>
-#include <map>
-#include <queue>
+#include <bits/stdc++.h>
 #define nline "\n"
 #define ll long long int
 #define pb push_back
