@@ -1,0 +1,106 @@
+#include<bits/stdc++.h>
+  #define nline "\n"
+  #define ll long long int
+  #define pb push_back
+  #define vi vector<int>
+  #define vll vector<ll>
+  #define vvi vector < vi >
+  #define vvll vector < vll >
+  #define pii pair<int,int>
+  #define pll pair<long long, long long>
+  #define mod 1000000007
+  #define inf 1000000000000000001
+  #define all(c) c.begin(),c.end()
+  #define mp(x,y) make_pair(x,y)
+  #define mem(a,val) memset(a,val,sizeof(a))
+  #define eb emplace_back
+  // #define f first
+  // #define s second
+  // mt19937 rng(chrono::high_resolution_clock::now().time_since_epoch().count());
+  using namespace std;
+ 
+    ll n,m;
+    vll a;
+ 
+      ll power(ll a, ll b)  //a is base, b is exponent
+      {
+        if(b==0)
+          return 1;
+        if(b==1)
+          return a;
+        if(b%2 == 1)
+          return (power(a,b-1)*a)%mod;
+        ll q = power(a,b/2);
+        return (q*q)%mod;
+      }
+ 
+    void vary(ll x,ll y)
+    {
+      x+=n;
+      a[x]=y;
+      for(x/=2;x>=1;x/=2)
+      {
+        a[x]=a[x*2]+a[(x*2)+1];
+      }
+    }
+ 
+    ll add(ll x, ll y)
+    {
+      x+=n;y+=n;
+      ll sum=0;
+      while(x<=y)
+      {
+        if (x%2==1){sum+=a[x++];}
+        if (y%2==0){sum+=a[y--];}
+        x/=2;y/=2;
+      }
+      return sum;
+    }
+ 
+  int main()
+  {
+    cin >> n >> m;
+    ll t=n;
+    ll r=log2(n);
+    if (n!=(1<<r)){r++;n+=(1<<r)-n;}
+    a.resize((2*n)+1,0);
+    for (int i = n; i < n+t; ++i)
+    {
+      cin >> a[i];
+    }
+    for (int i = n-1; i >=1;--i)
+    {
+      a[i]=a[i*2]+a[(i*2)+1];
+    }
+ 
+    // for (int i = 0; i < 2*n; ++i)
+    // {
+    //   cout << i%10 << ' ';
+    // }cout << nline;
+ 
+    for (int i = 0; i < m; ++i)
+    {
+      ll x,y,z;
+      cin >> x >> y >> z;
+      if (x==1)
+      {
+        vary(y,z);
+      }
+      else
+      {
+        z--;
+        ll ans=add(y,z);
+        cout << ans << nline;
+      }
+ 
+      // cout << x << nline;
+      // for (int i = 0; i < 2*n; ++i)
+      // {
+      //   cout << a[i] << ' ';
+      // }cout << nline;
+ 
+    }
+ 
+ 
+      return 0;  
+  }
